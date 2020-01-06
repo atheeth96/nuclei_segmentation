@@ -18,10 +18,13 @@ app/__pycache__/
 model_*
 *.pth
 event* 
+<<<<<<< HEAD
 img_patches*
 bound_patches*
 nuc_patches*
 Dapi_patient_data/
+=======
+>>>>>>> d647ffaee8a2ff8a96d5b0660ee8054652d245e2
 *.zip
 *.csv
 *.xlsx
