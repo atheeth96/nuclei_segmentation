@@ -161,8 +161,10 @@ def post_process(PRED_PATH,patient_name,img_list,df_summary,df_whole,processed_d
     
     path_to_patient_data='Dapi_patient_data/{}'.format(patient_name)
     current_no_entries=len(df_summary)
+    
     if not os.path.exists(processed_dir):
         os.mkdir(processed_dir)
+        
     selected_roi=random.choice(img_list)
     selected_ip=imread(path_to_patient_data+'/ROI/'+selected_roi)
     selected_prediction=imread(path_to_patient_data+'/predictions/nuclei_'+selected_roi.split('.')[0]+'.png')
