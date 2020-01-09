@@ -2,6 +2,7 @@ import torch.nn as nn
 import torch
 import torchvision
 
+
 class SoftDiceLoss(nn.Module):
     def __init__(self, weight=None, size_average=True):
         super().__init__()
