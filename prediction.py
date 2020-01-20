@@ -77,8 +77,8 @@ def whole_img_pred(IMAGE_PATH,img_list,pred_dir_name,model,print_prompt=False):
         pad_c1=((new_c_count-1)*512-c+512)//2 #0
         pad_c2=((new_c_count-1)*512-c+512)-pad_c1#0
 
-        image_padded=np.pad(input_image, [(pad_r1,pad_r2),(pad_c1,pad_c2)], 'constant', constant_values=0)/np.amax(input_image)
-
+        image_padded=np.pad(input_image, [(pad_r1,pad_r2),(pad_c1,pad_c2)], 'constant', constant_values=0)
+        
 
         window_shape=(512,512)
 
@@ -86,6 +86,10 @@ def whole_img_pred(IMAGE_PATH,img_list,pred_dir_name,model,print_prompt=False):
         img_patches=img_patches.reshape((-1,512,512))
         img_patches=img_patches.transpose((0,2,1))
         img_patches=np.expand_dims(img_patches,axis=1)
+        
+        max_patch_level=np.amax(img_patches,axis=(1,2,3)).reshape(-1)
+        for i in range(img_patches.shape[0]):
+            img_patches[i]=img_patches[i]/max_patch_level[i]
         
     
         bound_temp=[]

@@ -3,7 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import init
 
-<<<<<<< HEAD
 
 def save_model(model,optimizer,name,scheduler=None):
     if scheduler==None:
@@ -30,8 +29,6 @@ def load_model(filename,model,optimizer=None,scheduler=None):
         print(scheduler.state_dict()['param_groups'][-1]['lr'],' : Learning rate')
 
 
-=======
->>>>>>> d647ffaee8a2ff8a96d5b0660ee8054652d245e2
 def init_weights(net, init_type='normal', gain=0.02):
     def init_func(m):
         classname = m.__class__.__name__

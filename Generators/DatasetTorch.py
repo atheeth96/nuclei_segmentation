@@ -7,6 +7,43 @@ from torch.utils.data import Dataset
 from torchvision import transforms
 import random
 import numpy as np
+import matplotlib.pyplot as plt
+
+
+def visualize_loader(loader,index):
+    for i,sample in enumerate(loader):
+        #print(sample['image'].shape)
+        if i==1:
+            image=(sample['image'][index]).numpy()
+            
+            
+            #image=np.zeros(image_i.shape,dtype=np.uint8)
+            #image[np.where(image_i!=0)]=255
+
+            mask=(sample['nuclei_mask'][index]).numpy()
+            
+        
+            boundary=(sample['bound_mask'][index]).numpy()
+            output=sample['nuclei_mask']
+            output=torch.cat((output,sample['nuclei_mask']),dim=1)
+           
+    
+            image=np.squeeze(image.transpose(1,2,0),axis=2)
+            print(image.shape,np.amax(image))
+            mask=np.squeeze(mask.transpose(1,2,0),axis=2) 
+            
+            boundary=np.squeeze(boundary.transpose(1,2,0),axis=2)
+            #print(image)
+            fig=plt.figure()
+            plt.imshow(image*255)
+            fig2=plt.figure()
+            plt.imshow(mask)
+            fig3=plt.figure()
+            plt.imshow(boundary)
+            break
+            
+            
+            
 def Sort_Tuple(tup):  
       
     # getting length of list of tuples 
