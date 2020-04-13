@@ -11,6 +11,7 @@ app/__pycache__/
 *.gz
 *.png
 *.npy
+*.png
 *.jpg
 *.jpeg
 *.sql
@@ -23,12 +24,13 @@ Trained_model*
 *.pth
 event* 
 model_output
+model_*
+*.pth
+event* 
 img_patches*
 bound_patches*
 nuc_patches*
-Dapi_patient_data/
-=======
->>>>>>> d647ffaee8a2ff8a96d5b0660ee8054652d245e2
+Dapi_pa*
 *.zip
 *.csv
 *.xlsx

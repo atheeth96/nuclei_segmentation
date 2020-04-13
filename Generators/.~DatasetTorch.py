@@ -12,9 +12,11 @@ import matplotlib.pyplot as plt
 
 def visualize_loader(loader,index):
     for i,sample in enumerate(loader):
+<<<<<<< HEAD
         if i==1:
             image=(sample['image'][index]).numpy()
            
+=======
         #print(sample['image'].shape)
         if i==1:
             image=(sample['image'][index]).numpy()
@@ -23,6 +25,7 @@ def visualize_loader(loader,index):
             #image=np.zeros(image_i.shape,dtype=np.uint8)
             #image[np.where(image_i!=0)]=255
 
+>>>>>>> 140f06fa4a6a524131a1326a4c95e582fca5f8dd
             mask=(sample['nuclei_mask'][index]).numpy()
             
         
@@ -36,9 +39,11 @@ def visualize_loader(loader,index):
             mask=np.squeeze(mask.transpose(1,2,0),axis=2) 
             
             boundary=np.squeeze(boundary.transpose(1,2,0),axis=2)
+<<<<<<< HEAD
            
             
             return image*255,mask,boundary
+=======
             #print(image)
             fig=plt.figure()
             plt.imshow(image*255)
@@ -47,6 +52,7 @@ def visualize_loader(loader,index):
             fig3=plt.figure()
             plt.imshow(boundary)
             break
+>>>>>>> 140f06fa4a6a524131a1326a4c95e582fca5f8dd
             
             
             
