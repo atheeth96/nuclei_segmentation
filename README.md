@@ -4,15 +4,15 @@ An pytorch implementation of Attention U-Net architecture for nuclei segmentatio
 # Results
 Some Sample Result, you can refer to the [Results/](Results/) folder for **details**.
 
-  ![GT Nuclei][50%](Results/GT_R026_nuclei.jpg)
+  ![GT Nuclei][2160x2560,50%](Results/GT_R026_nuclei.jpg)
   **GT Nuclei**
 
-  ![GT Boundary][50%](Results/GT_R026_bound.jpg)
+  ![GT Boundary][2160x2560,50%](Results/GT_R026_bound.jpg)
    **GT Boundary**
-   ![GT Nuclei][50%](Results/nuclei_R026.jpg)
+   ![GT Nuclei][2160x2560,50%](Results/nuclei_R026.jpg)
   **Predictions Nuclei**
 
-  ![GT Boundary][50%](Results/bound_R026.jpg)
+  ![GT Boundary][2160x2560,50%](Results/bound_R026.jpg)
    **Predictions Boundary**
 
 # Implementation details
