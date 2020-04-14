@@ -39,6 +39,10 @@ OS generated files #
 ######################
 .DS_Store
 .ipynb_checkpoints
+.~preprocess.py
+losses.py
+prediction.py
+preprocess.py
 .DS_Store?
 ._*
 .Spotlight-V100
