@@ -16,6 +16,8 @@ import pandas as pd
 import random
 
 
+##### Contains function to generate nuclei seeds for further use in label map generation ######
+
 def multiple_erosion(img,iter=5):
     for j in (range(5)):
         img=morphology.binary_erosion(img, selem=morphology.selem.disk(1))
@@ -46,6 +48,7 @@ def generate_nuclei_seeds(IMAGE_PATH,img_list,pred_dir_name,model,print_prompt=T
     step=512
     avg_dice=0
     loop=tqdm(img_list)
+    
     for count,img_name in enumerate(loop):
         
         

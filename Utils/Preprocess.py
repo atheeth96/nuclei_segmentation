@@ -16,8 +16,7 @@ from skimage.io import imread,imsave
 import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
-# from callbacks_class.callbacks_dapi import CosineWithRestart
-# from Models.Models import attn_unet
+
 import os, shutil
 
 
@@ -39,13 +38,9 @@ def generate_train_mask(patient_id,path2patient):
         for i,nuclei in enumerate(range(1,np.amax(img))):
             img_cancer=np.zeros(img.shape,dtype=np.uint8)
             img_cancer[np.where(img==nuclei)]=255
-            #print(np.where(img_temp==255))
 
             contours=skimage.measure.find_contours(img_cancer,0)[0]
-            
-            
-        
-            
+
             img_temp=np.zeros(img.shape,dtype=np.uint8)
             for countour in contours:
                 x,y=countour

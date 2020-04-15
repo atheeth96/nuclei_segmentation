@@ -42,11 +42,11 @@ import tensorboard
 # Need to run this only once
 # Comment out the for loops after first run
 
-patients_done=['S-190413-00208','S-190413-00163','S-190501-00409','S-190413-00113','S-190413-00054','S-190413-00238',\
-              'S-190413-00104','S-190413-00137','S-190413-00217','S-190413-00098','S-190413-00140','S-190413-00107',\
-              'S-190501-00428','S-190501-00422','S-190501-00425','S-190501-00425']
+# patients_done=['S-190413-00208','S-190413-00163','S-190501-00409','S-190413-00113','S-190413-00054','S-190413-00238',\
+#               'S-190413-00104','S-190413-00137','S-190413-00217','S-190413-00098','S-190413-00140','S-190413-00107',\
+#               'S-190501-00428','S-190501-00422','S-190501-00425','S-190501-00425']
 
-patient_list=list(set(slides_to_transfer)-set(patients_done))
+# patient_list=list(set(slides_to_transfer)-set(patients_done))
 
 # for patient in patient_list:
 #     print(patient)

@@ -19,8 +19,7 @@ from tqdm import tqdm
 # from callbacks_class.callbacks_dapi import CosineWithRestart
 # from Models.Models import attn_unet
 import os, shutil
-from preprocess import generate_train_mask
-
+from Preprocess import generate_train_mask
 
 
 patient_list=['S-190413-00146','S-190413-00110']

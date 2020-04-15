@@ -50,7 +50,7 @@ else:
 
 loop=tqdm(img_list)
 for count,img_name in enumerate(loop):
-    dice,nuclei_temp,bound_temp=whole_img_pred(IMAGE_PATH,img_name,model,print_prompt=False)
+    nuclei_temp,bound_temp=whole_img_pred(IMAGE_PATH,img_name,model,print_prompt=False)
     
     imsave(pred_dir_name+'/bound_'+img_name.split('.')[0]+'.png',bound_temp)
     imsave(pred_dir_name+'/nuclei_'+img_name.split('.')[0]+'.png',nuclei_temp)
