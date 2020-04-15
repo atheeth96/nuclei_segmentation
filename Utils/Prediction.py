@@ -112,7 +112,7 @@ def multiple_dialte(img,iter=5):
         img=morphology.binary_dilation(img, selem=morphology.selem.disk(1))
     return img
 
-def post_process(PRED_PATH,patient_name,img_name,threshold='otsu',apply_qc=False,print_prompt=False):
+def post_process(PRED_PATH,patient_name,img_name,threshold='otsu',apply_qc=False):
     
     path_to_patient_data='Dapi_patient_data/{}'.format(patient_name)
     
