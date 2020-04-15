@@ -19,6 +19,6 @@ Some Sample Result, you can refer to the [Results/](Results/) folder for **detai
 
 **Library** : Pytorch version 1.3.1<br/>
 **GPU** : Tesla V100-SXM2-32GB<br/>
-**Number of epochs** : 200<br/>
+**Number of epochs** : 10<br/>
 
  
