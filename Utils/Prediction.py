@@ -13,6 +13,17 @@ import numpy as np
 import math
 from skimage import img_as_ubyte
 
+from skimage.morphology import watershed,remove_small_holes,remove_small_objects,closing,area_closing
+import scipy.ndimage as ndimage
+from scipy import ndimage as ndi
+from scipy.ndimage.morphology import (
+                                    binary_erosion,
+                                    binary_dilation, 
+                                    binary_fill_holes,
+                                    distance_transform_cdt,
+                                    distance_transform_edt)
+from skimage.feature import peak_local_max
+
 
 import torch
 import torchvision
@@ -112,37 +123,17 @@ def multiple_dialte(img,iter=5):
         img=morphology.binary_dilation(img, selem=morphology.selem.disk(1))
     return img
 
-def post_process(PRED_PATH,patient_name,img_name,threshold='otsu',apply_qc=False):
-    
-    path_to_patient_data='Dapi_patient_data/{}'.format(patient_name)
-    
-#     selected_ip=imread(path_to_patient_data+'/ROI/'+img_name)
-    selected_binary_gt=imread(path_to_patient_data+'/nuc_mask/'+img_name)
+def post_process(nuclei,boundary,gt_narray_image,qc_file_path=None):
 
-    gt_narray_name=\
-    '/datalab/training-assets/R_medical/atheeth/DAPI/nucleiseg_dapi/Dapi_patient_data/{}/NucSeg/NucMap_{}_{}.tif'.\
-    format(patient_name,patient_name,img_name.split('.')[0])
-    gt_narray_image=imread(gt_narray_name)
-    gt_narray_image=gt_narray_image.astype(np.uint16)
-    
-    
-    bound_img_path=os.path.join(PRED_PATH,'{}_bound_'.format(patient_name)+img_name.split('.')[0]+'.png')
-    bound_img=imread(bound_img_path)
-    nuc_img_path=os.path.join(PRED_PATH,'{}_nuclei_'.format(patient_name)+img_name.split('.')[0]+'.png')
-    nuc_img=imread(nuc_img_path)
-    comb_img=img_recon(nuc_img,bound_img)
+    comb_img=img_recon(nuclei,boundary)
     comb_img=comb_img.astype(np.uint16)
 
 #     plt.imshow(comb_img);plt.show()
-    if apply_qc:
-        qc_path='Dapi_patient_data/{}/OverallQCMasks'.format(patient_name)
-        qc_file_path=os.path.join(qc_path,'OverallQCMask_{}_{}.tif'.format(patient_name,img_name.split('.')[0]))
+    if qc_file_path is not None:
         qc_mask=imread(qc_file_path)
         qc_mask[qc_mask!=0]=1
         comb_img=comb_img*qc_mask
         del qc_mask
-    
-
 
     gt_image=remap_label(gt_narray_image)
     total=len(np.unique(gt_image))
@@ -151,10 +142,10 @@ def post_process(PRED_PATH,patient_name,img_name,threshold='otsu',apply_qc=False
     list_1=None
 
     list_q,_,list_cm=get_fast_pq(gt_image, comb_img)
-    gt_image=(gt_image>0).astype(np.uint8)
-    comb_img_dice=(comb_img>0).astype(np.uint8)
-    dice=whole_dice_metric(comb_img_dice,gt_image)
-    del comb_img_dice
+    gt_image_dice=(gt_image>0).astype(np.uint8)*255
+    comb_img_dice=(comb_img>0).astype(np.uint8)*255
+    dice=whole_dice_metric(comb_img_dice,gt_image_dice)
+    del comb_img_dice,gt_image_dice
     metrics=[list_q,list_cm,dice,total]
                                        
     return comb_img,metrics
