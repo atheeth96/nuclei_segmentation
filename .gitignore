@@ -6,7 +6,7 @@
 *__pycache*
 *.pyc
 app/__pycache__/
-
+*Copy*
 #images
 *.gz
 *.png
