@@ -98,7 +98,7 @@ bound_patches_dir_test='processed_data/bound_patches_test'
 batch_size_train=8
 batch_size_test=4
 augmentation_transform=[GaussianNoise(),RandomCropResize(),ContrasrStretching()]
-add_augmentaion=False
+add_augmentaion=False 
 if add_augmentaion: 
     transform=torchvision.transforms.Compose([Scale(input_image=True),\
                                                   torchvision.transforms.RandomApply(augmentation_transform, p=0.35)\

@@ -24,7 +24,7 @@ from scipy.ndimage.morphology import (
                                     distance_transform_edt)
 from skimage.feature import peak_local_max
 
-
+from skimage.measure import label, regionprops
 import torch
 import torchvision
 import torch.nn as nn

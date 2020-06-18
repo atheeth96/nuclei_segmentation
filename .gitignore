@@ -3,6 +3,7 @@
 *.xls
 *.csv
 #other
+.~*
 *__pycache*
 *.pyc
 app/__pycache__/
